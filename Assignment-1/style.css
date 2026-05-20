@@ -1,0 +1,27 @@
+@font-face {
+    font-family: "Storm Gust";
+    src: url(./storm_gust/Storm\ Gust.ttf);
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,body{
+    height:100%;
+    width:100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+
+}
+
+#main{
+    height:100%;
+    width:100%;
+    background-color: aquamarine;
+    margin:40px;
+}
+
