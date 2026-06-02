@@ -370,6 +370,7 @@ Find index of `"Rahul"` in array.
 **Hint:** Use `indexOf()`
 */
 
+
 /*
 ### Hard
 Find all positions of repeated number `5`.

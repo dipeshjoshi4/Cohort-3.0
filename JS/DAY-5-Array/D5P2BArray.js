@@ -38,3 +38,28 @@ unshift - starting main elemet add
 
 //?splice and slice => for random place to add and remove elements from an array
 
+//?SYNTAX - just delete
+// arr.splice(startIndex,deleteCount)
+
+//?SYNTAX - add newItem 
+// arr.splice(startIndex,deleteCount,newItem)
+
+
+// var arr = [10,20,30,40];
+// arr[10] = 100;
+// console.log(arr)
+// console.log(arr.length) //11
+
+// var arr = [10,20,30,40];
+// var reverse = arr.reverse();
+// console.log(reverse)
+
+// var arr = [10,20,30,40];
+// console.log(arr.sort())
+
+var arr = [10,44,90,85,48,100,72,344,4005]; //10,44,48,72,85,90,100,344,4005
+console.log(arr.sort()) //10,100,344,4005,44,48,72,85,85,90
+
+//? -> so above in two or more numbers array it took as a string .so only first digit way sort
+
+console.log(arr.sort((a,b)=>(a-b)))
