@@ -57,9 +57,54 @@ unshift - starting main elemet add
 // var arr = [10,20,30,40];
 // console.log(arr.sort())
 
-var arr = [10,44,90,85,48,100,72,344,4005]; //10,44,48,72,85,90,100,344,4005
-console.log(arr.sort()) //10,100,344,4005,44,48,72,85,85,90
+// var arr = [10,44,90,85,48,100,72,344,4005]; //10,44,48,72,85,90,100,344,4005
+// console.log(arr.sort()) //10,100,344,4005,44,48,72,85,85,90
 
 //? -> so above in two or more numbers array it took as a string .so only first digit way sort
 
-console.log(arr.sort((a,b)=>(a-b)))
+// console.log(arr.sort((a,b)=>(a-b)))
+
+//01:40:00
+
+
+//?Even Numbers find out from 1 to 100
+// let arr = [];
+// for(let a=1; a<=100; a++){
+//     if(a % 2 == 0){
+//         arr.push(a)
+//     }
+// }
+// console.log(arr)
+
+//?concat
+
+// var arr = [10,20,30]
+// var arr2 = [1,2,3]
+// var arr3 = [11,22,33]
+// var answer = arr2.concat(arr).concat(arr3)
+// console.log(answer);
+
+//?Join and split  => string to array and array to string
+
+// var str = "sarthak sharma"
+// var arr = str.split('')
+// console.log(arr)
+
+// var ans = arr.join('-')
+// console.log(ans)
+// console.log(typeof(ans))
+
+var str = "shreyans coding school"
+
+var arr = str.split(' ')
+console.log(arr)    //['shreyans','coding','school']
+
+var brr = arr[1].split('');
+console.log(brr)   //['c','o','d','i','n','g']
+
+str3 = brr.reverse()
+console.log(str3) //['g','n','i','d','o','c']
+
+var str3 = brr.join('');
+console.log(str3); //gnidoc
+
