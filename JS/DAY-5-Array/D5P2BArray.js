@@ -94,17 +94,17 @@ unshift - starting main elemet add
 // console.log(ans)
 // console.log(typeof(ans))
 
-var str = "shreyans coding school"
+// var str = "shreyans coding school"
 
-var arr = str.split(' ')
-console.log(arr)    //['shreyans','coding','school']
+// var arr = str.split(' ')
+// console.log(arr)    //['shreyans','coding','school']
 
-var brr = arr[1].split('');
-console.log(brr)   //['c','o','d','i','n','g']
+// var brr = arr[1].split('');
+// console.log(brr)   //['c','o','d','i','n','g']
 
-str3 = brr.reverse()
-console.log(str3) //['g','n','i','d','o','c']
+// str3 = brr.reverse()
+// console.log(str3) //['g','n','i','d','o','c']
 
-var str3 = brr.join('');
-console.log(str3); //gnidoc
+// var str3 = brr.join('');
+// console.log(str3); //gnidoc
 
