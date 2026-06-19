@@ -1,0 +1,48 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,body{
+    height: 100%;
+    width: 100%;
+    background-color: black;
+}
+
+main{
+    height:100%;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* gap:25px; */
+}
+
+.bulb{
+    height:400px;
+    width:400px;
+    border-radius: 50%;
+    border: 1px solid rgb(251, 251, 251);
+}
+
+button{
+    padding:20px 40px;
+    color: rgb(251, 251, 251);
+    background-color: rgb(0, 0, 0);
+    border-radius:20px;
+    border: 1px solid;
+}
+
+.Horizantalrow{
+    width:1px;
+    height:80px;
+    background-color: rgb(255, 255, 255);
+}
+
+.lightUp{
+    background-color:yellow;
+    box-shadow:0 0 15px 5px yellow;
+}
