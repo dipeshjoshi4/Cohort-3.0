@@ -4,7 +4,7 @@ A fully interactive Task Manager Application built using only HTML5, CSS3, and V
 
 ## Deployed & Repository Links
 - **Live Demo**: [https://your-live-link.netlify.app](https://task-manager-cohort3-dj.netlify.app/)
-- **GitHub Repository**: [https://github.com/your-username/task-manager](https://github.com/your-username/task-manager)
+- **GitHub Repository**: [https://github.com/your-username/task-manager](https://github.com/dipeshjoshi4/Cohort-3.0/tree/main/Assignment-DOM/task-manager-app)
 
 ## Implementation Checklist
 - [x] **Task Creation Module**: Build UI to input Task Title and select Category.
