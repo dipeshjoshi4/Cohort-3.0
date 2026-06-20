@@ -3,7 +3,7 @@
 A fully interactive Task Manager Application built using only HTML5, CSS3, and Vanilla JavaScript. No frameworks or libraries were used.
 
 ## Deployed & Repository Links
-- **Live Demo**: [https://your-live-link.netlify.app](https://your-live-link.netlify.app)
+- **Live Demo**: [https://your-live-link.netlify.app](https://task-manager-cohort3-dj.netlify.app/)
 - **GitHub Repository**: [https://github.com/your-username/task-manager](https://github.com/your-username/task-manager)
 
 ## Implementation Checklist
