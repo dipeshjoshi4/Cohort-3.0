@@ -22,7 +22,7 @@ https://task-manager-cohort3-dj.netlify.app/
 
 Add your repository link here:
 
-https://github.com/your-username/task-manager
+https://github.com/dipeshjoshi4/Cohort-3.0/tree/main/Assignment-DOM/task-manager-app
 
 ---
 
