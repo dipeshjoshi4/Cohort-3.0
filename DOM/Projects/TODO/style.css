@@ -1,0 +1,90 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,body{
+    height:100%;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+main{
+    height:60%;
+    width:60%;
+    background-color: grey;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    gap:30px;
+}
+
+input{
+    padding:10px 20px;
+    outline: none;
+    border: 1px solid grey;
+    border-radius: 5px;  
+}
+
+#add{
+    padding:10px 20px;
+    background-color: rgb(74, 74, 136);
+    color: white;
+    border-radius: 5px;
+    border: none;
+    cursor:pointer;
+}
+
+.todo-list{
+    width:70%;
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+}
+
+.li{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid black;
+    width:100%;
+    border: 1px solid white;
+    padding:10px 15px;
+    border-radius: 8px;
+    background-color: white;
+    color: black;   
+}
+
+h3{
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.btn{
+    border: none;
+    padding:5px 25px;
+    border-radius: 8px;
+}
+
+.edit{
+    background-color: goldenrod;
+    color: white;
+}
+
+.del{
+    background-color: darkred;
+    color: white;
+}
+
+@media screen and (max-width: 850px) {
+    .li {
+      flex-direction: row;
+    }
+  }
+  
