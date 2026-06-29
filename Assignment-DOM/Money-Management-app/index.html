@@ -1,0 +1,327 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>FinTrack Pro – Personal Finance Tracker</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<!-- =====
+     AUTHatication PAGE
+     ======================== -->
+<div id="auth-page">
+  <div class="auth-wrap">
+    <div class="auth-hero">
+      <div class="auth-hero-icon">💰</div>
+      <h1>FinTrack Pro</h1>
+      <p>Your complete personal finance tracker</p>
+    </div>
+    <div class="auth-body">
+      <div class="auth-tabs">
+        <button class="a-tab on" onclick="authTab('login')">Sign In</button>
+        <button class="a-tab" onclick="authTab('register')">Create Account</button>
+      </div>
+
+      <!-- LOGin -->
+      <div class="auth-form on" id="form-login">
+        <div class="fg">
+          <label>Username</label>
+          <input id="l-user" type="text" placeholder="Enter your username" autocomplete="username"/>
+        </div>
+        <div class="fg">
+          <label>Password</label>
+          <input id="l-pass" type="password" placeholder="Enter your password" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()"/>
+        </div>
+        <button class="auth-btn" onclick="doLogin()">Sign In →</button>
+        <div class="auth-msg" id="l-msg"></div>
+      </div>
+
+      <!-- REGISTERation -->
+      <div class="auth-form" id="form-register">
+        <div class="fg">
+          <label>Full Name</label>
+          <input id="r-name" type="text" placeholder="e.g. Rahul Sharma"/>
+        </div>
+        <div class="fg row2">
+          <div>
+            <label>Username</label>
+            <input id="r-user" type="text" placeholder="Choose username" autocomplete="username"/>
+          </div>
+          <div>
+            <label>Password</label>
+            <input id="r-pass" type="password" placeholder="Min 4 characters" autocomplete="new-password"/>
+          </div>
+        </div>
+        <div class="fg">
+          <label>Currency</label>
+          <select id="r-cur">
+            <option value="INR">₹ INR – Indian Rupee</option>
+            <option value="USD">$ USD – US Dollar</option>
+            <option value="EUR">€ EUR – Euro</option>
+            <option value="GBP">£ GBP – British Pound</option>
+            <option value="JPY">¥ JPY – Japanese Yen</option>
+          </select>
+        </div>
+        <button class="auth-btn" onclick="doRegister()">Create Account →</button>
+        <div class="auth-msg" id="r-msg"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========================
+     MAIN APP
+     ======================== -->
+<div id="main-app">
+  <!-- NAVBAR line -->
+  <nav>
+    <div class="nav-logo">
+      <div class="nav-logo-icon">💰</div>
+      <div class="nav-logo-text">FinTrack<span>Pro</span></div>
+    </div>
+    <div class="nav-links">
+      <button class="nl on" onclick="goPage('pg-dash')">📊 Dashboard</button>
+      <button class="nl" onclick="goPage('pg-cal')">📅 Calendar</button>
+      <button class="nl" onclick="goPage('pg-budget')">🎯 Budgets</button>
+      <button class="nl" onclick="goPage('pg-settings')">⚙️ Settings</button>
+    </div>
+    <div class="nav-r">
+      <div class="user-chip" onclick="goPage('pg-settings')">
+        <div class="uav" id="nav-av" style="background:linear-gradient(135deg,#10b981,#059669);">?</div>
+        <span class="uname" id="nav-uname">User</span>
+      </div>
+      <button class="nbtn nbtn-add" onclick="openModal()">+ Add</button>
+      <button class="nbtn nbtn-logout" onclick="doLogout()">Logout</button>
+    </div>
+  </nav>
+
+  <div class="app-body">
+
+    <!-- ======================== DASHBOARD main page ======================== -->
+    <div class="page on" id="pg-dash">
+
+      <!-- Summary Cards -->
+      <div class="cards">
+        <div class="kcard blue">
+          <div class="kcard-icon">💼</div>
+          <div class="kcard-label">Balance</div>
+          <div class="kcard-val" id="c-bal">₹0.00</div>
+          <div class="kcard-sub">Current net balance</div>
+        </div>
+        <div class="kcard green">
+          <div class="kcard-icon">📈</div>
+          <div class="kcard-label">Total Income</div>
+          <div class="kcard-val" id="c-inc">₹0.00</div>
+          <div class="kcard-sub" id="c-inc-sub">0 transactions</div>
+        </div>
+        <div class="kcard red">
+          <div class="kcard-icon">📉</div>
+          <div class="kcard-label">Total Expenses</div>
+          <div class="kcard-val" id="c-exp">₹0.00</div>
+          <div class="kcard-sub" id="c-exp-sub">0 transactions</div>
+        </div>
+        <div class="kcard amber">
+          <div class="kcard-icon">🔢</div>
+          <div class="kcard-label">Transactions</div>
+          <div class="kcard-val" id="c-cnt">0</div>
+          <div class="kcard-sub" id="c-cnt-sub">This month: 0</div>
+        </div>
+      </div>
+
+      <!-- Chart -->
+      <div class="sec">
+        <div class="sec-head">
+          <div class="sec-title">📊 Cash Flow</div>
+          <div class="chart-btns">
+            <button class="cbt on" onclick="setChart('bar',this)">Bar</button>
+            <button class="cbt" onclick="setChart('line',this)">Line</button>
+            <button class="cbt" onclick="setChart('doughnut',this)">Donut</button>
+            <button class="cbt" onclick="setChart('pie',this)">Pie</button>
+            <button class="cbt" onclick="setChart('polarArea',this)">Polar</button>
+          </div>
+        </div>
+        <div class="chart-canvas-wrap"><canvas id="mainChart"></canvas></div>
+      </div>
+
+      <!-- Transactions -->
+      <div class="sec">
+        <div class="sec-head">
+          <div class="sec-title">💳 Transactions <span class="sec-badge" id="tx-badge">0</span></div>
+        </div>
+        <div class="filter-bar">
+          <div class="search-wrap">
+            <input class="search-box" id="srch" placeholder="Search by description or category…" oninput="renderTable()"/>
+          </div>
+          <button class="fbt on" onclick="setFilter('all',this)">All</button>
+          <button class="fbt" onclick="setFilter('income',this)">Income</button>
+          <button class="fbt" onclick="setFilter('expense',this)">Expense</button>
+          <select class="sort-sel" id="sort-sel" onchange="renderTable()">
+            <option value="date-desc">Newest first</option>
+            <option value="date-asc">Oldest first</option>
+            <option value="amt-desc">Highest amount</option>
+            <option value="amt-asc">Lowest amount</option>
+          </select>
+        </div>
+        <div class="tx-table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Type</th>
+                <th>Amount</th>
+                <th style="text-align:center;">Del</th>
+              </tr>
+            </thead>
+            <tbody id="tx-body"></tbody>
+          </table>
+        </div>
+        <div class="pagination" id="pag-wrap"></div>
+      </div>
+    </div>
+
+    <!-- ======================== CALENDAR ======================== -->
+    <div class="page" id="pg-cal">
+      <div class="sec">
+        <div class="sec-head">
+          <div class="cal-header" style="flex:1;">
+            <button class="cal-nav" onclick="calMove(-1)">‹</button>
+            <div class="cal-month" id="cal-lbl">Month Year</div>
+            <button class="cal-nav" onclick="calMove(1)">›</button>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text2);">
+            <span style="display:flex;align-items:center;gap:4px;"><span style="width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block;"></span>Income</span>
+            <span style="display:flex;align-items:center;gap:4px;"><span style="width:8px;height:8px;border-radius:50%;background:var(--red);display:inline-block;"></span>Expense</span>
+          </div>
+        </div>
+        <div class="cal-grid" id="cal-daynames"></div>
+        <div class="cal-grid" id="cal-grid"></div>
+      </div>
+      <div class="day-panel" id="day-panel">
+        <div class="day-panel-head">
+          <div class="day-panel-title" id="day-panel-title">Transactions</div>
+          <button class="modal-x" onclick="closeDayPanel()" style="width:28px;height:28px;border-radius:8px;border:1.5px solid var(--border);background:var(--surface2);color:var(--text2);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;">×</button>
+        </div>
+        <div class="tx-table-wrap">
+          <table>
+            <thead><tr><th>Description</th><th>Category</th><th>Type</th><th>Amount</th><th>Del</th></tr></thead>
+            <tbody id="day-panel-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================== BUDGETS ======================== -->
+    <div class="page" id="pg-budget">
+      <div class="sec">
+        <div class="sec-head">
+          <div class="sec-title">🎯 Budget Limits</div>
+          <button class="act-btn prime" style="width:auto;padding:7px 16px;margin:0;" onclick="openBudgetModal()">+ Set Budget</button>
+        </div>
+        <p style="font-size:13px;color:var(--text2);margin-bottom:16px;">Set monthly spending limits per category. Get warned when you're close to the limit.</p>
+        <div class="budget-grid" id="budget-grid"></div>
+      </div>
+      <!-- Monthly summary chart for budgets -->
+      <div class="sec">
+        <div class="sec-head"><div class="sec-title">📅 Monthly Breakdown</div></div>
+        <div class="chart-canvas-wrap"><canvas id="budgetChart"></canvas></div>
+      </div>
+    </div>
+
+    <!-- ======================== PLAY WITH PROFILE SETTINGS ======================== -->
+    <div class="page" id="pg-settings">
+      <div class="settings-grid">
+
+        <div class="s-card">
+          <h3>👤 Profile</h3>
+          <div class="fg"><label>Display Name</label><input id="s-name" type="text" placeholder="Your full name"/></div>
+          <div class="fg"><label>Currency</label>
+            <select id="s-cur">
+              <option value="INR">₹ INR</option>
+              <option value="USD">$ USD</option>
+              <option value="EUR">€ EUR</option>
+              <option value="GBP">£ GBP</option>
+              <option value="JPY">¥ JPY</option>
+            </select>
+          </div>
+          <button class="act-btn prime" onclick="saveProfile()">💾 Save Profile</button>
+        </div>
+
+        <div class="s-card">
+          <h3>🎨 Preferences</h3>
+          <div class="s-row">
+            <div><div class="s-row-label">Dark Mode</div><div class="s-row-sub">Switch to dark theme</div></div>
+            <label class="toggle"><input type="checkbox" id="dk-tog" onchange="toggleDark()"/><span class="tslider"></span></label>
+          </div>
+          <div class="s-row">
+            <div><div class="s-row-label">Currency</div><div class="s-row-sub" id="cur-display">₹ INR</div></div>
+            <span style="font-size:18px;" id="cur-flag">🇮🇳</span>
+          </div>
+          <button class="act-btn success" onclick="exportCSV()" style="margin-top:14px;">📥 Export CSV</button>
+          <button class="act-btn danger" onclick="resetAll()">🗑️ Reset My Data</button>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- /app-body -->
+</div><!-- /main-app -->
+
+<!-- ========================
+     ADD TRANSACTION MODAL
+     ======================== -->
+<div class="overlay" id="tx-overlay" onclick="ovClick(event)">
+  <div class="modal">
+    <div class="modal-top">
+      <div class="modal-title">Add Transaction</div>
+      <button class="modal-x" onclick="closeModal()">×</button>
+    </div>
+    <div class="type-toggle">
+      <button class="ttype income on" id="tt-inc" onclick="setType('income')">💚 Income</button>
+      <button class="ttype expense" id="tt-exp" onclick="setType('expense')">❤️ Expense</button>
+    </div>
+    <div class="mfg"><label>Description</label><input id="tx-desc" type="text" placeholder="e.g. Monthly salary, Groceries…"/></div>
+    <div class="mrow2">
+      <div class="mfg"><label>Amount</label><input id="tx-amt" type="number" min="0" step="0.01" placeholder="0.00"/></div>
+      <div class="mfg"><label>Date</label><input id="tx-date" type="date"/></div>
+    </div>
+    <div class="mfg"><label>Category</label><select id="tx-cat"></select></div>
+    <div class="mfg"><label>Notes (optional)</label><input id="tx-note" type="text" placeholder="Any extra details…"/></div>
+    <button class="save-btn" onclick="saveTx()">Save Transaction</button>
+  </div>
+</div>
+
+<!-- ========================
+     BUDGET MODAL
+     ======================== -->
+<div class="overlay" id="bg-overlay" onclick="bgOvClick(event)">
+  <div class="modal">
+    <div class="modal-top">
+      <div class="modal-title">Set Budget Limit</div>
+      <button class="modal-x" onclick="closeBudgetModal()">×</button>
+    </div>
+    <div class="mfg"><label>Category</label>
+      <select id="bg-cat">
+        <option value="Food & Dining">🍽️ Food & Dining</option>
+        <option value="Shopping">🛍️ Shopping</option>
+        <option value="Recharge & Bills">📱 Recharge & Bills</option>
+        <option value="Petrol & Auto">⛽ Petrol & Auto</option>
+        <option value="Utilities">💡 Utilities</option>
+        <option value="Entertainment">🎬 Entertainment</option>
+        <option value="Other">📦 Other</option>
+      </select>
+    </div>
+    <div class="mfg"><label>Monthly Limit</label><input id="bg-amt" type="number" min="0" placeholder="e.g. 5000"/></div>
+    <button class="save-btn" onclick="saveBudget()">Set Budget</button>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script src="./script.js"></script>
+</body>
+</html>

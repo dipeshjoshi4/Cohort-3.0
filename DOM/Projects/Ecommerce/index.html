@@ -10,12 +10,45 @@
     <main>
         <nav>
             <h1>E-comm</h1>
-            <button>Create Products</button>
+            <button id="create">Create Products</button>
         </nav>
-        <div class="form">
+
+        <div class="products">
+            <div class="product-card">
+
+                <div class="img">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmfdhk8oflKQaX_ayEhqF7eStoLLVAzS05bu3l94pn9g&s=10" alt="img">
+                </div>
+
+                <div class="text">
+                    <h2>Name</h2>
+                    <p>Description</p>
+                    <p>Price</p>
+                </div>
+
+                <div class="btns">
+                    <button id="update">UPDATE</button>
+                    <button id="delete">DELETE</button>
+                </div>
+            </div>
 
         </div>
+
+
+        <div class="form">
+            <div class="top">
+                <h1 id="close">X</h1>
+            </div>
+            <form>
+                <h1>Create Product</h1>
+                <input type="text" placeholder="product Name">
+                <input type="text" placeholder="Description">
+                <input type="text" placeholder="Price">
+                <input type="url" placeholder="img-url">
+                <button>Create</button>
+            </form>
+        </div>
     </main>
-    
+    <script src="./script.js"></script>
 </body>
 </html>
