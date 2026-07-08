@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glassmorphic Productivity Hub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Dynamic Theme and Time-Aware Backdrop Grid -->
+    <div class="background-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <div class="app-container">
+        <!-- SIDEBAR NAVIGATION -->
+        <aside class="sidebar">
+            <!-- Top Header containing Logo and Repositioned Theme Toggle Icon -->
+            <div class="sidebar-header">
+                <span class="logo-text">✨ FocusHub</span>
+                <button id="theme-toggle-btn" class="theme-icon-btn" title="Toggle Theme">🌙</button>
+            </div>
+            
+            <!-- Global Interactive Metrics -->
+            <div class="score-widget">
+                <span class="score-label">Productivity Score</span>
+                <div id="total-score" class="score-value">0</div>
+                <div class="score-meta">Keep crushing goals!</div>
+            </div>
+
+            <nav class="nav-menu">
+                <button class="nav-btn active" data-target="todo-view">✅ Todo List</button>
+                <button class="nav-btn" data-target="goals-view">🎯 Daily Goals</button>
+                <button class="nav-btn" data-target="pomodoro-view">⏱️ Pomodoro</button>
+                <button class="nav-btn" data-target="focus-view">📊 Focus Tracker</button>
+                <button class="nav-btn" data-target="weather-view">🌤️ Weather</button>
+            </nav>
+        </aside>
+
+        <!-- MAIN CENTRAL DISPLAY CONTENT WINDOW -->
+        <main class="main-content">
+            <!-- Global Header Bar Inside Panel Container -->
+            <header class="top-bar">
+                <div id="datetime-widget">
+                    <span id="display-time">00:00:00</span> — <span id="display-date">Loading...</span>
+                </div>
+                
+                <!-- NEW PERSISTENT LIVE QUOTE RUNTIME (NO CLOCK TEXT SHOWN) -->
+                <div class="persistent-quote-ticker">
+                    <div class="quote-ticker-content">
+                        <span id="ticker-quote-text">"Loading inspiration..."</span>
+                        <span id="ticker-quote-author"></span>
+                    </div>
+                    <button id="ticker-quote-refresh-btn" class="ticker-refresh-btn" title="Refresh Quote Now">🔄</button>
+                </div>
+            </header>
+
+            <div class="view-viewport">
+                
+                <!-- TODO LIST VIEW -->
+                <section id="todo-view" class="view-section">
+                    <h2>Task Management Todo</h2>
+                    <div class="input-group">
+                        <input type="text" id="todo-input" placeholder="Add a new task assignment...">
+                        <button id="todo-add-btn" class="action-btn">Add Task</button>
+                    </div>
+                    <ul id="todo-list" class="list-container"></ul>
+                    <div class="action-footer">
+                        <button id="todo-submit-btn" class="control-btn save-btn">Submit & Save Todos</button>
+                    </div>
+                </section>
+
+                <!-- DAILY GOALS VIEW -->
+                <section id="goals-view" class="view-section hidden">
+                    <h2>Daily Progress Targets</h2>
+                    <div id="goals-progress" class="progress-bar-text">Progress Check: 0 / 0 Completed</div>
+                    <div class="input-group">
+                        <input type="text" id="goal-input" placeholder="Set a core priority target...">
+                        <button id="goal-add-btn" class="action-btn">Set Goal</button>
+                    </div>
+                    <ul id="goals-list" class="list-container"></ul>
+                    <div class="action-footer">
+                        <button id="goals-submit-btn" class="control-btn save-btn">Submit & Save Goals</button>
+                    </div>
+                </section>
+
+                <!-- POMODORO TIMER VIEW -->
+                <section id="pomodoro-view" class="view-section hidden">
+                    <h2>Pomodoro Interval Core</h2>
+                    <div class="timer-container">
+                        <div id="timer-label">Work Block</div>
+                        <div id="timer-display">25:00</div>
+                        <div class="timer-controls">
+                            <button id="timer-start" class="control-btn start-timer">Start</button>
+                            <button id="timer-pause" class="control-btn pause-timer">Pause</button>
+                            <button id="timer-reset" class="control-btn reset-timer">Reset</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- FOCUS TRACKER VIEW -->
+                <section id="focus-view" class="view-section hidden">
+                    <h2>Focus Sessions Tracker</h2>
+                    <p class="section-desc">Track and view completed work cycles computed inside your total score algorithm metric.</p>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-num" id="stat-completed-pomo">0</div>
+                            <div class="stat-lbl">Intervals Completed</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-num" id="stat-focused-time">0m</div>
+                            <div class="stat-lbl">Total Minutes Logged</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- WEATHER VIEW -->
+                <section id="weather-view" class="view-section hidden">
+                    <h2>Regional Weather Grid</h2>
+                    <div class="weather-display">
+                        <div id="weather-temp" class="weather-temp">--°C</div>
+                        <div id="weather-desc" class="weather-desc">Initializing geolocation feeds...</div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
