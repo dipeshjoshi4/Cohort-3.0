@@ -1,11 +1,13 @@
 import React from 'react'
 import './App.css'
+import Form from './components/Form'
 
 
 const App = () => {
   return (
     <div>
-      <h1 className='bg-blue-700'>Run</h1>
+      <h1 class="bg-red-500">This is a Form</h1>
+      <Form />
     </div>
   )
 }
